@@ -7,11 +7,7 @@ randomtimestamp can be used from the command line or imported as a python packag
 ### Command line usage
 To use the script from command line
 ```
-<<<<<<< HEAD
   $randomtimestamp
-=======
-  $ python -m randomtimestamp
->>>>>>> fb9056350a885ba1c05ce2032afe37468b2cc09d
   30-08-1995 17:58:14
 ```
 

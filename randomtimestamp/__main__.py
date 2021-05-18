@@ -1,4 +1,4 @@
-from randomtimestamp import randomtimestamp
+from .core import randomtimestamp
 
 
 def main():

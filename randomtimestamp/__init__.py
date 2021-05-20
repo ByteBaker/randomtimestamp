@@ -1,5 +1,5 @@
 """
-Python module to generate random time stamps.
+Python module to generate random timestamps.
 """
 
 __title__ = 'randomtimestamp'
@@ -8,8 +8,6 @@ __author__ = "Shraddha Kishan Tripathi"
 __license__ = 'GPL v3.0'
 
 
-from .core import randomtimestamp
+from .functions import randomtimestamp
 
-__all__ = [
-	'randomtimestamp'
-	]
+__all__ = ['randomtimestamp']

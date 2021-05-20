@@ -1,8 +1,8 @@
-from .core import randomtimestamp
+from .functions import randomtimestamp
 
 
 def main():
-    print(randomtimestamp(1950,True))
+    print(randomtimestamp(1950, True))
 
 
 if __name__ == "__main__":

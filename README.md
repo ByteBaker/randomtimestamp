@@ -1,4 +1,4 @@
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/randomtimestamp?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/randomtimestamp?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/randomtimestamp?label=PyPi) ![PyPI - Format](https://img.shields.io/pypi/format/randomtimestamp?label=Format) ![PyPI - Downloads](https://img.shields.io/pypi/dm/randomtimestamp?label=Downloads&color=yellow)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/randomtimestamp?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/randomtimestamp?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/randomtimestamp?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/randomtimestamp?label=Status) ![PyPI - Format](https://img.shields.io/pypi/format/randomtimestamp?label=Format) ![PyPI - Downloads](https://img.shields.io/pypi/dm/randomtimestamp?label=Downloads&color=yellow) 
 
 # randomtimestamp <sup> (v2.0.0)</sup>
 Random timestamp generator

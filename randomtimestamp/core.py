@@ -1,9 +1,13 @@
-from datetime import datetime, timedelta
+from datetime import date, datetime, time, timedelta
 from random import randint
 from typing import Tuple
 
-DEFAULT_FORMAT = "%d-%m-%Y %H:%M:%S"
+DEFAULT_DATE_FORMAT: str = "%d-%m-%Y"
+DEFAULT_TIME_FORMAT: str = "%H:%M:%S"
+DEFAULT_FORMAT: str = DEFAULT_DATE_FORMAT + " " + DEFAULT_TIME_FORMAT
 
+MIN_DATE: date = date(1950, 1, 1)
+MAX_DATE: date = datetime.today().date()
 
 def validate(
         start_year: int,
@@ -53,7 +57,7 @@ def validate(
             else:
                 # 'end' not given, use now() as default
                 start_datetime = start
-                end_datetime = datetime.now().replace(microsecond=0)
+                end_datetime = datetime.combine(MAX_DATE, time(23, 59, 59))
                 if start_datetime > end_datetime:
                     # 'start' < now() required
                     # raise ValueError
@@ -132,8 +136,76 @@ def validate(
     return start_datetime, end_datetime
 
 
+def validate_time(
+        start: time,
+        end: time,
+        text: bool
+        ) -> None:
+    """
+    Validate user supplied arguments.
+    - Check type validity.
+    - Check value ranges.
+
+    Not to be imported.
+
+    Order of resolution:
+    - text
+    - start/end
+    """
+
+    if not isinstance(text, bool):
+        error = "'text' can only be True/False"
+        raise TypeError(error)
+
+    if not isinstance(start, time):
+        error = "'start' must be an instance of time"
+        raise TypeError(error)
+
+    if not isinstance(end, time):
+        error = "'start' must be an instance of time"
+        raise TypeError(error)
+    
+    if not start < end:
+        error = "'start' < 'end' required"
+        raise ValueError(error)
+
+
+def validate_date(
+        start: date,
+        end: date,
+        text: bool
+        ) -> None:
+    """
+    Validate user supplied arguments.
+    - Check type validity.
+    - Check value ranges.
+
+    Not to be imported.
+
+    Order of resolution:
+    - text
+    - start/end
+    """
+
+    if not isinstance(text, bool):
+        error = "'text' can only be True/False"
+        raise TypeError(error)
+
+    if not isinstance(start, date):
+        error = "'start' must be an instance of date"
+        raise TypeError(error)
+
+    if not isinstance(end, date):
+        error = "'start' must be an instance of date"
+        raise TypeError(error)
+    
+    if not start < end:
+        error = "'start' < 'end' required"
+        raise ValueError(error)
+
+
 # Function which generates random datetime object
-def gettime(start_datetime: datetime, end_datetime: datetime) -> datetime:
+def get_datetime(start_datetime: datetime, end_datetime: datetime) -> datetime:
     """
     Core function to generate a random timestamp between two datetime objects.
     Should not be imported.
@@ -142,3 +214,44 @@ def gettime(start_datetime: datetime, end_datetime: datetime) -> datetime:
     random_gap_seconds = randint(0, gap_seconds)
     random_datetime = start_datetime + timedelta(seconds=random_gap_seconds)
     return random_datetime
+
+
+#Function which generates random time object
+def get_time_between(start_time: time, end_time: time) -> time:
+    """
+    Core function to generate a random time between two time objects
+    Should not be imported.
+    """
+
+    # Combined 'start_time' & 'end_time' with MIN_DATE to generate datetime object
+    # So that randomtimestamp can be used to generate a random datetime
+    # And then take out the time part of it since date is same for both
+
+    start_datetime: datetime = datetime.combine(MIN_DATE, start_time)
+    end_datetime: datetime = datetime.combine(MIN_DATE, end_time).replace(microsecond=0)
+
+    r_datetime: datetime = get_datetime(start_datetime, end_datetime)
+    r_time: time = r_datetime.time()
+
+    return r_time
+
+
+#Function which generates random date object
+def get_date_between(start_date: date, end_date: date) -> date:
+    """
+    Core function to generate a random date between two date objects
+    Should not be imported.
+    """
+    min_time: time = time(0, 0, 0)          # Minimum time possible
+
+    # Combined 'start_date' & 'end_date' with 'min_time' to generate datetime object
+    # So that randomtimestamp can be used to generate a random datetime
+    # And then take out the date part of it since time is same for both
+
+    start_datetime: datetime = datetime.combine(start_date, min_time)
+    end_datetime: datetime = datetime.combine(end_date, min_time)
+
+    r_datetime: datetime = get_datetime(start_datetime, end_datetime)
+    r_date: date = r_datetime.date()
+
+    return r_date

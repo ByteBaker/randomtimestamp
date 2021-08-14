@@ -22,7 +22,9 @@ To use the script from command line
 In v2.1, the functions **randomtimestamp**, **random_time**, and **random_date** are available.
 
 1.  **randomtimestamp()** takes six optional arguments. A call without arguments returns a datetime between **January 1st, 1950, 00:00:00** and **({today}, 23:59:59)**.
+
  **NOTE**: **start/end** are resolved before **start_year/end_year**, therefore **start_year/end_year** have no effect if **start/end** have been provided. 
+ 
  **WARNING [breaking changes]** ⚠️ : Order of arguments to **randomtimestamp** has been changed in v2.1. If you're passing parameters as positionals, be careful before upgrading. The function also returns a *datetime* object rather than a string. 
 ```
 randomtimestamp(

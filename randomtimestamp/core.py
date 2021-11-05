@@ -48,7 +48,7 @@ def validate(
                         raise ValueError(error)
                     else:
                         # both 'start' & 'end' are valid
-                        start_datetime, end_datetime = start, end
+                        start_datetime, end_datetime = start.replace(microsecond=0), end.replace(microsecond=0)
                 else:
                     # 'end' is not a valid datetime object
                     # raise TypeError
@@ -56,7 +56,7 @@ def validate(
                     raise TypeError(error)
             else:
                 # 'end' not given, use now() as default
-                start_datetime = start
+                start_datetime = start.replace(microsecond=0)
                 end_datetime = datetime.combine(MAX_DATE, time(23, 59, 59))
                 if start_datetime > end_datetime:
                     # 'start' < now() required

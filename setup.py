@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="randomtimestamp",
-    version="2.1",
+    version="2.2",
     description="Generate random time stamps",
     long_description=README,
     long_description_content_type="text/markdown",

@@ -210,7 +210,7 @@ def get_datetime(start_datetime: datetime, end_datetime: datetime) -> datetime:
     Core function to generate a random timestamp between two datetime objects.
     Should not be imported.
     """
-    gap_seconds = (end_datetime - start_datetime).total_seconds()
+    gap_seconds = int((end_datetime - start_datetime).total_seconds())
     random_gap_seconds = randint(0, gap_seconds)
     random_datetime = start_datetime + timedelta(seconds=random_gap_seconds)
     return random_datetime

@@ -1,20 +1,30 @@
 from datetime import date, datetime, time
 from typing import Union
 
-from .core import (DEFAULT_DATE_FORMAT, DEFAULT_FORMAT, DEFAULT_TIME_FORMAT,
-                   MAX_DATE, MIN_DATE, get_date_between, get_datetime,
-                   get_time_between, validate, validate_date, validate_time)
+from .core import (
+    DEFAULT_DATE_FORMAT,
+    DEFAULT_FORMAT,
+    DEFAULT_TIME_FORMAT,
+    MAX_DATE,
+    MIN_DATE,
+    get_date_between,
+    get_datetime,
+    get_time_between,
+    validate,
+    validate_date,
+    validate_time,
+)
 
 
 # Main function that is invoked by the user
 def randomtimestamp(
-        start_year: int = 1950,
-        end_year: int = None,
-        text: bool = False,
-        start: datetime = None,
-        end: datetime = None,
-        pattern: str = DEFAULT_FORMAT
-        ) -> Union[datetime, str]:
+    start_year: int = 1950,
+    end_year: int = None,
+    text: bool = False,
+    start: datetime = None,
+    end: datetime = None,
+    pattern: str = DEFAULT_FORMAT,
+) -> Union[datetime, str]:
     """
     Function generates random timestamps between two dates/years.
 
@@ -54,11 +64,11 @@ def randomtimestamp(
 
 
 def random_time(
-        start: time = time.min,
-        end: time = time.max,
-        text: bool = False,
-        pattern: str = DEFAULT_TIME_FORMAT
-        ) -> Union[time, str]:
+    start: time = time.min,
+    end: time = time.max,
+    text: bool = False,
+    pattern: str = DEFAULT_TIME_FORMAT,
+) -> Union[time, str]:
     """
     Function generates random time between two time objects.
     With no input, the resulting time lies between (00:00:00) and (23:59:59)
@@ -66,7 +76,7 @@ def random_time(
     Arguments:
     - start (time) [default=(00:00:00)]
       Generate timestamp after 'start'
-    
+
     - end (time) [default=(23:59:59)]
       Generate timestamp before 'end'
 
@@ -80,7 +90,7 @@ def random_time(
 
     # If the values aren't valid, this raises an exception
     validate_time(start, end, text)
-    
+
     if text:
         return get_time_between(start, end).strftime(pattern)
     else:
@@ -88,11 +98,11 @@ def random_time(
 
 
 def random_date(
-        start: date = MIN_DATE,
-        end: date = MAX_DATE,
-        text: bool = False, 
-        pattern: str = DEFAULT_DATE_FORMAT
-        ) -> Union[date, str]:
+    start: date = MIN_DATE,
+    end: date = MAX_DATE,
+    text: bool = False,
+    pattern: str = DEFAULT_DATE_FORMAT,
+) -> Union[date, str]:
     """
     Function generates random date between two date objects.
     With no input, the resulting date lies between
@@ -101,7 +111,7 @@ def random_date(
     Arguments:
     - start (date) [default=(01-01-1950)]
       Generate timestamp after 'start'
-    
+
     - end (date) [default={today})]
       Generate timestamp before 'end'
 
@@ -122,4 +132,4 @@ def random_date(
         return get_date_between(start, end)
 
 
-__all__ = ['random_date', 'random_time', 'randomtimestamp']
+__all__ = ["random_date", "random_time", "randomtimestamp"]

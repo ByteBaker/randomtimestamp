@@ -3,7 +3,7 @@ Python module to generate random timestamps.
 """
 
 __title__ = 'randomtimestamp'
-__version__ = '2.1'
+__version__ = '2.3'
 __author__ = "ByteBaker"
 __license__ = 'GPL v3.0'
 

@@ -9,13 +9,10 @@ DEFAULT_FORMAT: str = DEFAULT_DATE_FORMAT + " " + DEFAULT_TIME_FORMAT
 MIN_DATE: date = date(1950, 1, 1)
 MAX_DATE: date = datetime.today().date()
 
+
 def validate(
-        start_year: int,
-        end_year: int,
-        text: bool,
-        start: datetime,
-        end: datetime
-        ) -> Tuple[datetime, datetime]:
+    start_year: int, end_year: int, text: bool, start: datetime, end: datetime
+) -> Tuple[datetime, datetime]:
     """
     Validate user supplied arguments.
     - Check type validity.
@@ -48,7 +45,9 @@ def validate(
                         raise ValueError(error)
                     else:
                         # both 'start' & 'end' are valid
-                        start_datetime, end_datetime = start.replace(microsecond=0), end.replace(microsecond=0)
+                        start_datetime, end_datetime = start.replace(
+                            microsecond=0
+                        ), end.replace(microsecond=0)
                 else:
                     # 'end' is not a valid datetime object
                     # raise TypeError
@@ -136,11 +135,7 @@ def validate(
     return start_datetime, end_datetime
 
 
-def validate_time(
-        start: time,
-        end: time,
-        text: bool
-        ) -> None:
+def validate_time(start: time, end: time, text: bool) -> None:
     """
     Validate user supplied arguments.
     - Check type validity.
@@ -164,17 +159,13 @@ def validate_time(
     if not isinstance(end, time):
         error = "'start' must be an instance of time"
         raise TypeError(error)
-    
+
     if not start < end:
         error = "'start' < 'end' required"
         raise ValueError(error)
 
 
-def validate_date(
-        start: date,
-        end: date,
-        text: bool
-        ) -> None:
+def validate_date(start: date, end: date, text: bool) -> None:
     """
     Validate user supplied arguments.
     - Check type validity.
@@ -198,7 +189,7 @@ def validate_date(
     if not isinstance(end, date):
         error = "'start' must be an instance of date"
         raise TypeError(error)
-    
+
     if not start < end:
         error = "'start' < 'end' required"
         raise ValueError(error)
@@ -216,7 +207,7 @@ def get_datetime(start_datetime: datetime, end_datetime: datetime) -> datetime:
     return random_datetime
 
 
-#Function which generates random time object
+# Function which generates random time object
 def get_time_between(start_time: time, end_time: time) -> time:
     """
     Core function to generate a random time between two time objects
@@ -236,13 +227,13 @@ def get_time_between(start_time: time, end_time: time) -> time:
     return r_time
 
 
-#Function which generates random date object
+# Function which generates random date object
 def get_date_between(start_date: date, end_date: date) -> date:
     """
     Core function to generate a random date between two date objects
     Should not be imported.
     """
-    min_time: time = time(0, 0, 0)          # Minimum time possible
+    min_time: time = time(0, 0, 0)  # Minimum time possible
 
     # Combined 'start_date' & 'end_date' with 'min_time' to generate datetime object
     # So that randomtimestamp can be used to generate a random datetime

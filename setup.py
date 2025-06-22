@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="randomtimestamp",
-    version="2.2",
+    version="2.3",
     description="Generate random time stamps",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -21,11 +21,12 @@ setup(
     classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.13",
         "Development Status :: 5 - Production/Stable",
     ],
     packages=["randomtimestamp"],
     include_package_data=True,
+    license_files=[],
     install_requires=[
 
     ],

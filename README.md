@@ -1,10 +1,10 @@
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/randomtimestamp?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/randomtimestamp?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/randomtimestamp?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/randomtimestamp?label=Status) ![PyPI - Format](https://img.shields.io/pypi/format/randomtimestamp?label=Format) ![PyPI - Downloads](https://img.shields.io/pypi/dm/randomtimestamp?label=Downloads&color=yellow) 
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/randomtimestamp?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/randomtimestamp?label=License&color=red) ![PyPI](https://img.shields.io/pypi/v/randomtimestamp?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/randomtimestamp?label=Status) ![PyPI - Format](https://img.shields.io/pypi/format/randomtimestamp?label=Format) ![PyPI - Downloads](https://img.shields.io/pypi/dm/randomtimestamp?label=Downloads&color=yellow) 
 
-# randomtimestamp <sup> (v2.2)</sup>
+# randomtimestamp <sup> (v2.3)</sup>
 Random timestamp generator
 ## Installation
 You know it:
-```
+```bash
 pip install randomtimestamp
 ```
 ## Usage
@@ -12,20 +12,19 @@ randomtimestamp can be used from the command line or imported as a python module
 
 #### Command line usage
 To use the script from command line
-```
+```bash
   $ randomtimestamp
   30-08-1995 17:58:14
 ```
 
 #### Python Module Usage
 
-In v2.2, the functions **randomtimestamp**, **random_time**, and **random_date** are available.
+The module exposes the APIs **randomtimestamp**, **random_time**, and **random_date**.
 
 1.  **randomtimestamp()** takes six optional arguments. A call without arguments returns a datetime between **January 1st, 1950, 00:00:00** and **({today}, 23:59:59)**.
 
- **NOTE**: **start/end** are resolved before **start_year/end_year**, therefore **start_year/end_year** have no effect if **start/end** have been provided. 
- **WARNING [breaking changes]** : Order of arguments to **randomtimestamp** has been changed in v2.1. If you're passing parameters as positionals, be careful before upgrading. The function also returns a *datetime* object rather than a string. 
-```
+ **NOTE**: **start/end** are resolved before **start_year/end_year**, therefore **start_year/end_year** have no effect if **start/end** have been provided.
+```py
 randomtimestamp(
     start_year: int = 1950,
     end_year: int = None,
@@ -37,7 +36,7 @@ randomtimestamp(
 ```
 2.  **random_time()** takes four optional arguments. A call without arguments returns a time between **between (00:00:00)** and **(23:59:59)**.
  
-```
+```py
 random_time(
     start: datetime.time = time.min,
     end: datetime.time = time.max,
@@ -47,7 +46,7 @@ random_time(
 ```
 3.  **random_date()** takes four optional arguments. A call without arguments returns a date between **(January 1, 1950)** and **today**.
  
-```
+```py
 random_date(
     start: datetime.date = date(1950, 1, 1),
     end: datetime.date = datetime.today().date(),
@@ -57,31 +56,16 @@ random_date(
 ```
 In any of these function calls, **start < end** & **start_year < end_year** is mandatory. **pattern** has no effect if **text = False**.
 
----
-
-## Changelog:
-
-##### v2.2
-- Fixed microsecond handling bug in datetime range. Closes [issue](https://github.com/ByteBaker/ubuntu21-btfix/issues/1).
-##### v2.1 
-- Dropped a minor version identifier to account for the small size of module. Only 2 digits to be used hereafter.
-- [Breaking change] Order of arguments to randomtimestamp() changed. Code using older versions without keyword arguments breaks.
-- [Breaking change] By default **randomtimestamp()** now generates datetime objects. **text = False** by default.
-- Introduced **random_time() & random_date()** to generate only time or date if needed.
-##### v2.0.0
-- Ability to provide **start/end** as datetime objects to randomtimestamp() for more precise control.
-- Lower limit of **start_year = 1950** removed.
-- Ability to use custom datetime pattern as described in [datetime documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes).
-##### v1.0.0
-- Randomtimestamp released. Timestamps can be generated between 1950 and current_year.
-- The timestamp can be generated as a string (by default) or a datetime object.
-
+#### Running tests
+```bash
+python -m unittest discover
+```
 ---
 
 
 ## Examples:
 Here are some examples of the possible syntaxes:
-```
+```py
   >>> from randomtimestamp import randomtimestamp, random_date, random_time
 
   >>> randomtimestamp()
